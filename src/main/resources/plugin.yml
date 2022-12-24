@@ -1,0 +1,20 @@
+name: UselesslyHardcoded
+version: '${project.version}'
+main: adhdmc.uselesslyhardcoded.UselesslyHardcoded
+api-version: 1.19
+description: for the Messages to print to the user
+commands:
+  rules:
+    description: rules
+    aliases: [rule|info]
+  claimkit:
+    description: claim kit
+    aliases: [kitclaim|shovel|goldshovel|goldenshovel]
+  vote:
+    description: vote
+    aliases: [voteall|voting|votes]
+  livemap:
+    description: map link
+    aliases: [dynmap]
+  yeet:
+    description: yeet
