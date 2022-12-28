@@ -12,13 +12,13 @@ import org.bukkit.persistence.PersistentDataType;
 public class LoginListener implements Listener {
     NamespacedKey flyStatus = FlyCommand.flyStatus;
     byte on = 1;
+    byte off = 0;
     @EventHandler
     public void onPlayerLogin(PlayerLoginEvent loginEvent){
         Player player = loginEvent.getPlayer();
         PersistentDataContainer playerPDC = player.getPersistentDataContainer();
-        Byte playerFlyState = playerPDC.get(flyStatus, PersistentDataType.BYTE);
-        if (playerFlyState != null
-                && playerFlyState == on
+        Byte playerFlyState = playerPDC.getOrDefault(flyStatus, PersistentDataType.BYTE, off);
+        if (playerFlyState == on
                 && player.hasPermission("uhc.fly")){
             player.setAllowFlight(true);
             player.setFlying(true);

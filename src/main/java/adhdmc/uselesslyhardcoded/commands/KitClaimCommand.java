@@ -20,11 +20,6 @@ public class KitClaimCommand implements CommandExecutor {
     NamespacedKey timer = new NamespacedKey(UselesslyHardcoded.plugin, "claimkit-time");
     private static final MiniMessage miniMessage = UselesslyHardcoded.getMiniMessage();
     Component goldShovelName = miniMessage.deserialize("<gradient:gold:yellow>Claim Shovel");
-    Component goldShovelLore = miniMessage.deserialize("""
-            <gray>Right click the
-            opposite corners of
-            the area you would
-            like to claim!""");
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
         if (!(sender instanceof Player player)) {
@@ -36,14 +31,14 @@ public class KitClaimCommand implements CommandExecutor {
         int serverTick = UselesslyHardcoded.plugin.getServer().getCurrentTick();
         ItemStack goldShovel = new ItemStack(Material.GOLDEN_SHOVEL, 1);
         goldShovel.getItemMeta().displayName(goldShovelName);
-        goldShovel.getItemMeta().lore(List.of(goldShovelLore));
+        /*
         if (timeStamp != null && timeStamp > serverTick) {
             player.sendRichMessage("<white>[<green>Server</green>]<dark_gray> »<reset> That command is currently on cooldown. You will have to wait to use this command again");
             return false;
-        }
+        }*/
         if (player.getInventory().addItem(goldShovel).isEmpty()) {
             sender.sendRichMessage("<white>[<green>Server</green>]<dark_gray> »<reset> <yellow>You have been given a claim shovel");
-            playerPDC.set(timer, PersistentDataType.INTEGER, serverTick);
+            //playerPDC.set(timer, PersistentDataType.INTEGER, (serverTick + 1800));
         } else {
             player.sendRichMessage("<white>[<green>Server</green>]<dark_gray> » <red>There was no room in your inventory for a golden shovel, please make space.");
         }

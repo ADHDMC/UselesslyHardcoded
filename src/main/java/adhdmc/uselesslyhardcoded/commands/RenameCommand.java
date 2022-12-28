@@ -9,6 +9,7 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Arrays;
@@ -35,8 +36,7 @@ public class RenameCommand implements CommandExecutor {
         }
         String renameString = Arrays.toString(args);
         Component renameComponent = miniMessage.deserialize(renameString);
-        ItemStack itemToRename = player.getInventory().getItemInMainHand();
-        itemToRename.getItemMeta().displayName(renameComponent);
+        player.getInventory().getItemInMainHand().getItemMeta().displayName(renameComponent);
         player.sendRichMessage("Item has been renamed to " + renameString);
         return true;
     }
