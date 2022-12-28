@@ -1,4 +1,4 @@
-package adhdmc.uselesslyhardcoded;
+package adhdmc.uselesslyhardcoded.commands;
 
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
