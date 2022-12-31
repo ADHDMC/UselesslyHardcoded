@@ -20,7 +20,7 @@ public final class UselesslyHardcoded extends JavaPlugin {
         this.getCommand("flyspeed").setExecutor(new FlySpeedCommand());
         this.getCommand("walkspeed").setExecutor(new WalkSpeedCommand());
         this.getCommand("rename").setExecutor(new RenameCommand());
-        this.getServer().getPluginManager().registerEvents(new LoginListener(), this);
+        this.getServer().getPluginManager().registerEvents(new FlyListeners(), this);
     }
 
     public static MiniMessage getMiniMessage() {
