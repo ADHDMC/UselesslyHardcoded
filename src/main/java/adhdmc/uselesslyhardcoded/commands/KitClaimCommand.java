@@ -27,18 +27,23 @@ public class KitClaimCommand implements CommandExecutor {
             return false;
         }
         PersistentDataContainer playerPDC = player.getPersistentDataContainer();
-        Integer timeStamp = playerPDC.get(timer, PersistentDataType.INTEGER);
-        int serverTick = UselesslyHardcoded.plugin.getServer().getCurrentTick();
+        Long timeStamp = playerPDC.get(timer, PersistentDataType.LONG);
+        // If they have used the command before...
+        if (timeStamp != null) {
+            int cooldownTime = 1800000;                                 // Time in Milliseconds
+            long timeDelta = System.currentTimeMillis() - timeStamp;    // Time Elapsed since Last Used
+            // Check how long since they last used the command...
+            if (timeDelta >= cooldownTime) {
+                player.sendRichMessage("<white>[<green>Server</green>]<dark_gray> »<reset> That command is currently on cooldown (" + (cooldownTime-timeDelta) + "s). You will have to wait to use this command again");
+                return false;
+            }
+        }
+        // Give player shovel.
         ItemStack goldShovel = new ItemStack(Material.GOLDEN_SHOVEL, 1);
         goldShovel.getItemMeta().displayName(goldShovelName);
-        /*
-        if (timeStamp != null && timeStamp > serverTick) {
-            player.sendRichMessage("<white>[<green>Server</green>]<dark_gray> »<reset> That command is currently on cooldown. You will have to wait to use this command again");
-            return false;
-        }*/
         if (player.getInventory().addItem(goldShovel).isEmpty()) {
             sender.sendRichMessage("<white>[<green>Server</green>]<dark_gray> »<reset> <yellow>You have been given a claim shovel");
-            //playerPDC.set(timer, PersistentDataType.INTEGER, (serverTick + 1800));
+            playerPDC.set(timer, PersistentDataType.LONG, System.currentTimeMillis());
         } else {
             player.sendRichMessage("<white>[<green>Server</green>]<dark_gray> » <red>There was no room in your inventory for a golden shovel, please make space.");
         }
