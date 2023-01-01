@@ -34,7 +34,8 @@ public class KitClaimCommand implements CommandExecutor {
             long timeDelta = System.currentTimeMillis() - timeStamp;    // Time Elapsed since Last Used
             // Check how long since they last used the command...
             if (timeDelta >= cooldownTime) {
-                player.sendRichMessage("<white>[<green>Server</green>]<dark_gray> »<reset> That command is currently on cooldown (" + (cooldownTime-timeDelta) + "s). You will have to wait to use this command again");
+                int timeSeconds = ((int)(cooldownTime-timeDelta))/1000;
+                player.sendRichMessage("<white>[<green>Server</green>]<dark_gray> »<reset> That command is currently on cooldown (" + timeSeconds + "s). You will have to wait to use this command again");
                 return false;
             }
         }
