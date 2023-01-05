@@ -6,13 +6,13 @@ description: for the Messages to print to the user
 commands:
   rules:
     description: rules
-    aliases: [rule|info]
+    aliases: [rule , info]
   claimkit:
     description: claim kit
-    aliases: [kitclaim|shovel|goldshovel|goldenshovel]
+    aliases: [kitclaim, shovel, goldshovel, goldenshovel]
   vote:
     description: vote
-    aliases: [voteall|voting|votes]
+    aliases: [voteall, voting , votes]
   livemap:
     description: map link
     aliases: [dynmap]

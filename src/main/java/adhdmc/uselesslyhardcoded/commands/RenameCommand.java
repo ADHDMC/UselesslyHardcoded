@@ -13,6 +13,7 @@ import org.bukkit.inventory.meta.ItemMeta;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Arrays;
+import java.util.stream.Collectors;
 
 public class RenameCommand implements CommandExecutor {
     MiniMessage miniMessage = UselesslyHardcoded.getMiniMessage();
@@ -34,9 +35,11 @@ public class RenameCommand implements CommandExecutor {
             player.sendRichMessage("<white>[<green>Server</green>]<dark_gray> » <gray>You need to hold something to rename!");
             return false;
         }
-        String renameString = Arrays.toString(args);
+        String renameString = String.join(" ", Arrays.stream(args).skip(0).collect(Collectors.joining(" ")));
         Component renameComponent = miniMessage.deserialize(renameString);
-        player.getInventory().getItemInMainHand().getItemMeta().displayName(renameComponent);
+        ItemMeta meta = player.getInventory().getItemInMainHand().getItemMeta();
+        meta.displayName(renameComponent);
+        player.getInventory().getItemInMainHand().setItemMeta(meta);
         player.sendRichMessage("Item has been renamed to " + renameString);
         return true;
     }
