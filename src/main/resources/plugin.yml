@@ -18,28 +18,3 @@ commands:
     aliases: [dynmap]
   yeet:
     description: yeet
-  fly:
-    description: fly
-    permission: uhc.fly
-  flyspeed:
-    description: flyspeed
-    permission: uhc.flyspeed
-  walkspeed:
-    description: walkspeed
-    permission: uhc.walkspeed
-  rename:
-    description: rename
-    permission: uhc.rename
-permissions:
-  uhc.fly:
-    description: fly
-    default: op
-  uhc.flyspeed:
-    description: flyspeed
-    default: op
-  uhc.walkspeed:
-    description: walkspeed
-    default: op
-  uhc.rename:
-    description: rename
-    default: op
