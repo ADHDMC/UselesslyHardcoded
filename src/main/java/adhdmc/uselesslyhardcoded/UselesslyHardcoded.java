@@ -15,15 +15,11 @@ public final class UselesslyHardcoded extends JavaPlugin {
         this.getCommand("vote").setExecutor(new VoteCommand());
         this.getCommand("rules").setExecutor(new RulesCommand());
         this.getCommand("livemap").setExecutor(new MapLinkCommand());
-        this.getCommand("yeet").setExecutor(new YeetCommand());
+        this.getServer().getPluginManager().registerEvents(new DiscordSRVListeners(), this);
     }
 
     public static MiniMessage getMiniMessage() {
         return miniMessage;
     }
 
-    @Override
-    public void onDisable() {
-        // Plugin shutdown logic
-    }
 }

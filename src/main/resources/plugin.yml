@@ -3,6 +3,9 @@ version: '${project.version}'
 main: adhdmc.uselesslyhardcoded.UselesslyHardcoded
 api-version: 1.19
 description: for the Messages to print to the user
+depend:
+  - PlaceholderAPI
+  - DiscordSRV
 commands:
   rules:
     description: rules
@@ -16,5 +19,3 @@ commands:
   livemap:
     description: map link
     aliases: [dynmap]
-  yeet:
-    description: yeet
